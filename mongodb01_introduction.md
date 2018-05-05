@@ -12,24 +12,27 @@
 
 假设说我们现在要构建一个论坛，用户可以发布帖子（帖子内容包括文本、视频、音频和图片等）。那么我们可以画出一个下图的表关系结构。
 
-![论坛ER简略图](论坛.png)
+![论坛](论坛.png)
 
 这种情况下如果我们需要展示帖子的文字，以及关联的图片、音频、视频、用户评论、赞和用户信息的话，我们需要关联8张表来取得自己想要的数据。如果我们有这样的帖子列表，随着用户的滚动动态加载，同时需要监听是否有新内容产生，这样的一个任务我们需要太多这种复杂的查询了。
 
 NoSQL解决这类问题的思路是，干脆抛弃传统的表结构，直接存储包含一个帖子所有内容的数据，像下面这样。
 
-> {
-> ​	"id":"5894a12f-dae1-5ab0-5761-1371ba4f703e",
-> ​	"title":"2017年的Spring发展方向","date":"2017-01-21",
-> ​	"body":"这篇文章主要探讨如何利用Spring Boot集成NoSQL",
-> ​	"createdBy":User,
-> ​	"images":["http://dev.local/myfirstimage.png","http://dev.local/mysecondimage.png"],
-> ​	"videos":[
->  		{"url":"http://dev.local/myfirstvideo.mp4", "title":"The first video"},
-> ​		{"url":"http://dev.local/mysecondvideo.mp4", "title":"The second video"} 
-> ​	],
-> ​	"audios":[ 
-> ​		{"url":"http://dev.local/myfirstaudio.mp3", "title":"The first audio"}, 
-> ​		{"url":"http://dev.local/mysecondaudio.mp3", "title":"The second audio"} 
-> ​	]
-> }
+```json
+{
+	"id":"5894a12f-dae1-5ab0-5761-1371ba4f703e",
+	"title":"2017年的Spring发展方向","date":"2017-01-21",
+	"body":"这篇文章主要探讨如何利用Spring Boot集成NoSQL",
+	"createdBy":User,
+	"images":["http://dev.local/myfirstimage.png","http://dev.local/mysecondimage.png"],
+	"videos":[
+ 		{"url":"http://dev.local/myfirstvideo.mp4", "title":"The first video"},
+		{"url":"http://dev.local/mysecondvideo.mp4", "title":"The second video"} 
+	],
+	"audios":[ 
+		{"url":"http://dev.local/myfirstaudio.mp3", "title":"The first audio"}, 
+		{"url":"http://dev.local/mysecondaudio.mp3", "title":"The second audio"} 
+	]
+}
+```
+
