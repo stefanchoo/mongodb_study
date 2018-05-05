@@ -19,31 +19,17 @@
 NoSQL解决这类问题的思路是，干脆抛弃传统的表结构，直接存储包含一个帖子所有内容的数据，像下面这样。
 
 > {
->
 > ​	"id":"5894a12f-dae1-5ab0-5761-1371ba4f703e",
->
 > ​	"title":"2017年的Spring发展方向","date":"2017-01-21",
->
 > ​	"body":"这篇文章主要探讨如何利用Spring Boot集成NoSQL",
->
 > ​	"createdBy":User,
->
 > ​	"images":["http://dev.local/myfirstimage.png","http://dev.local/mysecondimage.png"],
->
 > ​	"videos":[
->
 >  		{"url":"http://dev.local/myfirstvideo.mp4", "title":"The first video"},
->
-> ​		 {"url":"http://dev.local/mysecondvideo.mp4", "title":"The second video"} 
->
+> ​		{"url":"http://dev.local/mysecondvideo.mp4", "title":"The second video"} 
 > ​	],
->
 > ​	"audios":[ 
->
 > ​		{"url":"http://dev.local/myfirstaudio.mp3", "title":"The first audio"}, 
->
 > ​		{"url":"http://dev.local/mysecondaudio.mp3", "title":"The second audio"} 
->
-> ​	] 
->
+> ​	]
 > }
