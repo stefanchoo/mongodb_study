@@ -1,6 +1,6 @@
 ## NoSQL 简介
 
-NoSQL(= Not Only SQL)，即”不仅仅是SQL“。
+NoSQL(= Not Only SQL)，即"不仅仅是SQL"。
 
 在现代的计算系统上每天网络上都会产生庞大的数据量。
 
@@ -50,7 +50,7 @@ NoSQL(= Not Only SQL)，即”不仅仅是SQL“。
 
 ## CAP定理（CAP theorem）
 
-又称布鲁尔定理（Brewer's theorem）：一个分布式计算系统，不可能同时满足一下三点：
+又称布鲁尔定理（Brewer's theorem）：一个分布式计算系统，不可能同时满足以下三点：
 
 - ##### 一致性(Consistency)
 
