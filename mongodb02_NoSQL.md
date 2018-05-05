@@ -1,4 +1,4 @@
-### NoSQL 简介
+## NoSQL 简介
 
 NoSQL(= Not Only SQL)，即”不仅仅是SQL“。
 
@@ -12,7 +12,9 @@ NoSQL(= Not Only SQL)，即”不仅仅是SQL“。
 
 *select fun, profit from real_world where relational=false*
 
-### **关系型数据库遵循ACID规则
+
+
+## 关系型数据库遵循ACID规则
 
 事务 Transaction，和现实中的交易很类似，有四个特性：
 
@@ -32,7 +34,9 @@ NoSQL(= Not Only SQL)，即”不仅仅是SQL“。
 
    持久性是指一旦事务提交后，它的修改将会永久的保存在数据库上，即使出现宕机也不会丢失。
 
-### 分布式系统
+
+
+## 分布式系统
 
 分布式系统（distributed system）由多台计算机和通信的软件组件通过计算机网络连接（本地网络或广域网）组成。
 
@@ -42,7 +46,9 @@ NoSQL(= Not Only SQL)，即”不仅仅是SQL“。
 
 分布式系统可以应用在不同的平台上如：Pc、工作站、局域网和广域网上等。
 
-### CAP定理（CAP theorem）
+
+
+## CAP定理（CAP theorem）
 
 又称布鲁尔定理（Brewer's theorem）：一个分布式计算系统，不可能同时满足一下三点：
 
@@ -68,7 +74,9 @@ CAP的核心理论是：一个分布式系统不可能很好的同时满足一�
 
 ![CAP Theorem](http://www.runoob.com/wp-content/uploads/2013/10/cap-theoram-image.png)
 
-### 分布式计算的优点
+
+
+## 分布式计算的优点
 
 - ##### 可靠性（容错）
 
@@ -98,7 +106,9 @@ CAP的核心理论是：一个分布式系统不可能很好的同时满足一�
 
   更好的性价比
 
-### 分布式计算的缺点
+
+
+## 分布式计算的缺点
 
 - ##### 故障排除
 
@@ -116,7 +126,9 @@ CAP的核心理论是：一个分布式系统不可能很好的同时满足一�
 
   开放系统的特性存在数据的安全性和共享的风险等问题
 
-### RDBMS vs NoSQL
+
+
+## RDBMS vs NoSQL
 
 ##### RDBMS
 
@@ -140,7 +152,8 @@ CAP的核心理论是：一个分布式系统不可能很好的同时满足一�
 
 
 
-### BASE
+
+## BASE
 
 Base：Basically Available，Soft-state，Eventually Consistent
 
@@ -152,7 +165,8 @@ BASE是NoSQL数据库通常对可用性及一致性的弱要求原则：
 
 
 
-### NoSQL数据库的分类
+
+## NoSQL数据库的分类
 
 | 类型     | 代表NoSQL                                  | 特点                                       |
 | ------ | ---------------------------------------- | ---------------------------------------- |
