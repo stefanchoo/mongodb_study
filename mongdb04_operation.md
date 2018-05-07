@@ -1,6 +1,6 @@
 ## MongoDB - 连接
 
-shell连接语法：
+#### **语法**
 
 ```sql
 mongodb://[username:password@]host1[:port1],host2[:port2],...[,hostN[:portN]][/[database][?options]]
@@ -91,7 +91,7 @@ mongodb://host1,host2,host3/?safe=true;w=2;wtimeoutMS=2000
 
 ## MongoDB创建数据库
 
-语法：
+#### 语法
 
 ```Ruby
 use DATABASE_NAME
@@ -103,7 +103,7 @@ use DATABASE_NAME
 
 ## MongoDB删除数据库
 
-语法：
+#### 语法
 
 ```ruby
 db.dropDatabase()
@@ -113,13 +113,13 @@ db.dropDatabase()
 
 ## MongoDB创建集合
 
-语法：
+#### 语法
 
 ```ruby
 db.createCollection(name, options)
 ```
 
-参数说明：
+**参数说明**
 
 - name: 要创建的集合名称
 - options: 可选参数, 指定有关内存大小及索引的选项
@@ -135,7 +135,7 @@ options 可以是如下参数：
 
 在插入文档时，MongoDB 首先检查固定集合的 size 字段，然后检查 max 字段。
 
-### 实例
+#### **实例**
 
 在 test 数据库中创建 runoob 集合：
 
@@ -177,13 +177,13 @@ mycol2
 
 # MongoDB 删除集合
 
-**语法格式：**
+#### **语法**
 
 ```ruby
 db.collection.drop()
 ```
 
-参数说明：
+**参数说明**
 
 - 无
 
@@ -191,7 +191,7 @@ db.collection.drop()
 
 如果成功删除选定集合，则 drop() 方法返回 true，否则返回 false。
 
-### 实例
+#### **实例**
 
 在数据库 test 中，我们可以先通过 show collections 命令查看已存在的集合：
 
@@ -224,7 +224,7 @@ mycol
 
 BSON是一种类json的一种二进制形式的存储格式，简称为Binary JSON
 
-## 插入文档
+#### **插入文档**
 
 MongoDB 使用 insert() 或 save() 方法向集合中插入文档，语法如下：
 
@@ -235,7 +235,7 @@ db.COLLECTION_NAME.insert(document)
 - db.collection.insertOne(): 向指定集合中插入一条文档数据
 - db.collection.insertMany(): 向指定集合中插入多条文档数据
 
-### 实例
+#### **实例**
 
 以下文档可以存储在 MongoDB 的 runoob 数据库 的 col 集合中：
 
@@ -296,7 +296,7 @@ db.collection.update(
 - db.collection.updateOne() 向指定集合更新单个文档
 - db.collection.updateMany() 向指定集合更新多个文档
 
-参数说明：
+**参数说明：**
 
 - **query **: update的查询条件，类似sql update查询内where后面的。
 - **update **: update的对象和一些更新的操作符（如$,$inc...）等，也可以理解为sql update查询内set后面的
@@ -304,7 +304,7 @@ db.collection.update(
 - **multi **: 可选，mongodb 默认是false,只更新找到的第一条记录，如果这个参数为true,就把按条件查出来多条记录全部更新。
 - **writeConcern **:可选，抛出异常的级别。
 
-### 实例
+#### **实例**
 
 ```ruby
 > db.col.find()
@@ -410,7 +410,7 @@ WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
 
 # MongoDB 删除文档
 
-语法：
+#### **语法**
 
 ```ruby
 db.collection.remove(
@@ -425,7 +425,7 @@ db.collection.remove(
 - db.collection.deleteOne() 删除单个文档
 - db.collection.deleteMany() 删除多个文档
 
-### 实例
+#### **实例**
 
 ```Ruby
 > db.test.find().pretty()
@@ -471,7 +471,7 @@ db.collection.remove(
 
 # MongoDB 查询文档
 
-语法：
+#### **语法**
 
 ```ruby
 db.collection.find(query, projection)
@@ -519,13 +519,13 @@ pretty() 方法以格式化的方式来显示所有文档。
 
 MongoDB 的 find() 方法可以传入多个键(key)，每个键(key)以逗号隔开，即常规 SQL 的 AND 条件。
 
-语法格式如下：
+#### 语法
 
 ```ruby
 > db.col.find({key1:value1, key2:value2}).pretty()
 ```
 
-### 实例
+#### **实例**
 
 ```Ruby
 > db.test.find({"name":"abc","age":"25"}).pretty()
@@ -583,7 +583,7 @@ MongoDB OR 条件语句使用了关键字 **$or**,语法格式如下：
 
 # MongoDB $type 操作符
 
-## 描述
+**描述**
 
 在本章节中，我们将继续讨论MongoDB中条件操作符 $type。
 
@@ -653,16 +653,150 @@ db.col.find({"title" : {$type : 2}})
 
 我们除了可以使用limit()方法来读取指定数量的数据外，还可以使用skip()方法来跳过指定数量的数据，skip方法同样接受一个数字参数作为跳过的记录条数。
 
-语法
+#### **语法**
 
 ```ruby
 > db.COLLECTION_NAME.find().limit(NUMBER).skip(NUMBER)
 ```
 
-### 实例
+#### **实例**
 
 ```ruby
 > db.test.find({"age":{$gt:"18"}}, {_id:0, status:0}).limit(2).skip(1).pretty()
 { "name" : "dec", "age" : "19" }
 { "name" : "asd", "age" : "30" }
 ```
+# MongoDB 排序
+
+------
+
+## MongoDB sort()方法
+
+在MongoDB中使用使用sort()方法对数据进行排序，sort()方法可以通过参数指定排序的字段，并使用 1 和 -1 来指定排序的方式，其中 1 为升序排列，而-1是用于降序排列。
+
+#### **语法**
+
+sort()方法基本语法如下所示：
+
+```ruby
+> db.COLLECTION_NAME.find().sort({KEY:1})
+```
+
+#### **实例**
+
+```ruby
+> db.col.find({},{"title":1,"likes":1, _id:0}).sort({"likes":-1})
+{ "title" : "PHP 教程", "likes" : 200 }
+{ "title" : "Java 教程", "likes" : 150 }
+{ "title" : "MongoDB", "likes" : 110 }
+> db.col.find({},{"title":1,"likes":1, _id:0}).sort({"likes":1})
+{ "title" : "MongoDB", "likes" : 110 }
+{ "title" : "Java 教程", "likes" : 150 }
+{ "title" : "PHP 教程", "likes" : 200 }
+```
+
+##### 注意
+
+skip()，limit()，sort() 三个放在一起执行的时候，不管其位置如何，执行的顺序总是 sort() > skip() > limit() 
+
+如要按照位置顺序来执行，则需要借助管道流aggregate
+
+可参考：https://blog.csdn.net/thewindkee/article/details/54670750
+
+
+
+## MongoDB索引
+
+索引能够极大地提高效率，如果没有索引，MongoDB在读取数据时必须扫描集合中的每个文件并选取那些符合查询条件的记录。
+
+##### 索引是特殊的数据结构，索引存储在一个易于遍历读取的数据集合中，索引是对数据库表中的一列或多列的值进行排序的一种结构。
+
+#### ensureIndex() 方法
+
+#### 语法
+
+```ruby
+> db.COLLECTION_NAME.ensureIndex({KEY:1})
+```
+
+语法中的 Key 值为你要创建的索引字段，1为指定按升序创建索引，如果你想按照降序来创建索引指定为-1即可。
+
+### 实例
+
+```ruby
+> db.col.ensureIndex({"title":1})
+```
+
+ensureIndex() 方法中你也可以设置使用多个字段创建索引（关系型数据库中称作复合索引）。
+
+```ruby
+> db.col.ensureIndex({"title":1,"description":-1})
+```
+
+ensureIndex() 接收可选参数，可选参数列表如下：
+
+| Parameter          | Type          | Description                              |
+| ------------------ | ------------- | ---------------------------------------- |
+| background         | Boolean       | 建索引过程会阻塞其它数据库操作，background可指定以后台方式创建索引，即增加 "background" 可选参数。 "background" 默认值为**false**。 |
+| unique             | Boolean       | 建立的索引是否唯一。指定为true创建唯一索引。默认值为**false**.   |
+| name               | string        | 索引的名称。如果未指定，MongoDB的通过连接索引的字段名和排序顺序生成一个索引名称。 |
+| dropDups           | Boolean       | 在建立唯一索引时是否删除重复记录,指定 true 创建唯一索引。默认值为 **false**. |
+| sparse             | Boolean       | 对文档中不存在的字段数据不启用索引；这个参数需要特别注意，如果设置为true的话，在索引字段中不会查询出不包含对应字段的文档.。默认值为 **false**. |
+| expireAfterSeconds | integer       | 指定一个以秒为单位的数值，完成 TTL设定，设定集合的生存时间。         |
+| v                  | index version | 索引的版本号。默认的索引版本取决于mongod创建索引时运行的版本。       |
+| weights            | document      | 索引权重值，数值在 1 到 99,999 之间，表示该索引相对于其他索引字段的得分权重。 |
+| default_language   | string        | 对于文本索引，该参数决定了停用词及词干和词器的规则的列表。 默认为英语      |
+| language_override  | string        | 对于文本索引，该参数指定了包含在文档中的字段名，语言覆盖默认的language，默认值为 language. |
+
+### 实例
+
+在后台创建索引：
+
+```ruby
+> db.col.ensureIndex({"title":1},{"background":1})
+{
+	"createdCollectionAutomatically" : false,
+	"numIndexesBefore" : 1,
+	"numIndexesAfter" : 2,
+	"ok" : 1
+}
+> db.col.ensureIndex({"likes":1})
+{
+	"createdCollectionAutomatically" : false,
+	"numIndexesBefore" : 2,
+	"numIndexesAfter" : 3,
+	"ok" : 1
+}
+> db.col.getIndexes()
+[
+	{
+		"v" : 2,
+		"key" : {
+			"_id" : 1
+		},
+		"name" : "_id_",
+		"ns" : "test.col"
+	},
+	{
+		"v" : 2,
+		"key" : {
+			"title" : 1
+		},
+		"name" : "title_1",
+		"ns" : "test.col",
+		"background" : 1
+	},
+	{
+		"v" : 2,
+		"key" : {
+			"likes" : 1
+		},
+		"name" : "likes_1",
+		"ns" : "test.col"
+	}
+]
+```
+
+通过在创建索引时加background:true 的选项，让创建工作在后台执行
+
+查看索引：`db.collection.getIndexes()`，默认_id作为索引，由数据库本身来维持，且不可删除。
