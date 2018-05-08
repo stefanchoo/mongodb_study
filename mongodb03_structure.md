@@ -27,7 +27,6 @@ local   0.000GB
 runoob  0.000GB
 > use runoob
 switched to db runoob
-
 ```
 
 - **admin**: 从权限的角度来看，这是"root"数据库。要是将一个用户添加到这个数据库，这个用户自动继承所有数据库的权限。一些特定的服务器端命令也只能从这个数据库运行，比如列出所有的数据库或者关闭服务器
@@ -187,4 +186,29 @@ object
 ISODate("2018-03-04T15:00:45.479Z")
 > typeof mydate2
 object
+```
+### 配置（v3.6）
+
+MAC版使用brew 安装：`brew install mongodb`
+
+启动：`brew services start mongodb`
+
+停止：`brew services stop mongodb`
+
+重启：`brew services restart mongodb`
+
+配置文件：`/usr/local/etc/mongod.conf`
+
+配置文件格式采用yaml的方式，参考：https://docs.mongodb.com/manual/reference/configuration-options/index.html#net-options
+
+```yaml
+systemLog:
+  destination: file
+  path: /usr/local/var/log/mongodb/mongo.log
+  logAppend: true
+storage:
+  dbPath: /usr/local/var/mongodb
+net:
+ # bindIp: 127.0.0.1   # 只能通过localhost(127.0.0.1)来访问，配置成 0.0.0.0，所有可用的IP4可访问
+  bindIpAll: true      # 所有IP4 IP6 均可访问
 ```
